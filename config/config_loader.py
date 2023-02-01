@@ -1,5 +1,5 @@
 import yaml
-
+from config.constants import CONFIG_FILE
 
 class ConfigLoader:
 

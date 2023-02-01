@@ -1,7 +1,8 @@
 import telebot
 from main import *
 from telebot import types
-from customer_offers.sale_generator import discount
+from customer_offers.sale_generator import discount, start_text
+from config.constants import *
 
 
 bot = telebot.TeleBot(token)
@@ -9,11 +10,11 @@ bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=["start"])
 def start_message(message):
-    bot.reply_to(message, f"You can get random discount. Click on discount/")
+    bot.send_message(message.chat.id, start_text)
 
 
 @bot.message_handler(commands=["discount"])
 def set_sale_message(message):
-    bot.reply_to(message, f"Your personal discount is {discount} %")
+    bot.send_message(message.chat.id, f"{discount}")
 
 
